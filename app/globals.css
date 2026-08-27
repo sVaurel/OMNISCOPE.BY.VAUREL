@@ -153,3 +153,11 @@ h1 {
 .button:hover {
   transform: translateY(-1px);
 }
+
+::selection { background: #101318; color: #fff; }
+.topbar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
+.content-wrap { position: relative; }
+.content-wrap::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; border-top: 1px solid rgba(217,222,228,.45); pointer-events: none; }
+.eyebrow, .status, .metrics span { font-family: "Courier New", monospace; }
+.button { transition: transform .15s ease, background .15s ease; }
+.button:hover { transform: translateY(-1px); }
