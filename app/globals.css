@@ -44,6 +44,11 @@ a {
   align-items: center;
   padding: 0 40px;
   background: rgba(255, 255, 255, 0.82);
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
 }
 
 .brand {
@@ -74,6 +79,7 @@ a {
   font-size: 10px;
   letter-spacing: 0.12em;
   color: #59626c;
+  font-family: "Courier New", monospace;
 }
 
 .status i {
@@ -89,6 +95,17 @@ a {
   max-width: 1120px;
   margin: 0 auto;
   padding: 110px 40px;
+  position: relative;
+}
+
+.content-wrap::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34px;
+  border-top: 1px solid rgba(217, 222, 228, 0.45);
+  pointer-events: none;
 }
 
 .eyebrow {
@@ -96,6 +113,7 @@ a {
   letter-spacing: 0.16em;
   color: var(--muted);
   margin-bottom: 22px;
+  font-family: "Courier New", monospace;
 }
 
 h1 {
@@ -119,45 +137,181 @@ h1 {
   color: #fff;
 }
 
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(12px);
-}
-
-.content-wrap {
-  position: relative;
-}
-
-.content-wrap::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 34px;
-  border-top: 1px solid rgba(217, 222, 228, .45);
-  pointer-events: none;
-}
-
-.eyebrow,
-.status,
-.metrics span {
-  font-family: "Courier New", monospace;
-}
-
 .button {
-  transition: transform .15s ease, background .15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 .button:hover {
   transform: translateY(-1px);
 }
 
-::selection { background: #101318; color: #fff; }
-.topbar { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); }
-.content-wrap { position: relative; }
-.content-wrap::before { content: ""; position: absolute; left: 0; right: 0; top: 34px; border-top: 1px solid rgba(217,222,228,.45); pointer-events: none; }
-.eyebrow, .status, .metrics span { font-family: "Courier New", monospace; }
-.button { transition: transform .15s ease, background .15s ease; }
-.button:hover { transform: translateY(-1px); }
+/* Landing page */
+
+.hero {
+  padding-top: 130px;
+  padding-bottom: 90px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 36px;
+}
+
+.button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.button.primary {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.metrics {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.metrics article {
+  padding: 34px 40px;
+  border-right: 1px solid var(--line);
+}
+
+.metrics article:last-child {
+  border-right: 0;
+}
+
+.metrics span {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: "Courier New", monospace;
+}
+
+.metrics h2 {
+  font-size: 14px;
+  margin: 42px 0 10px;
+  letter-spacing: 0.08em;
+}
+
+.metrics p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.statement {
+  padding-top: 100px;
+  padding-bottom: 140px;
+}
+
+.statement p {
+  max-width: 900px;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+/* Intelligence dashboard */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.updated {
+  font: 10px "Courier New", monospace;
+  color: var(--muted);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.stat-card,
+.activity-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.stat-card {
+  padding: 22px;
+  min-height: 160px;
+}
+
+.stat-card span,
+.panel-title {
+  font: 10px "Courier New", monospace;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 44px;
+  letter-spacing: -0.06em;
+  margin-top: 28px;
+}
+
+.stat-card p {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 4px 0 0;
+}
+
+.activity-panel {
+  margin-top: 10px;
+}
+
+.panel-title {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.activity-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 22px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.activity-row:last-child {
+  border-bottom: 0;
+}
+
+.activity-row b {
+  color: var(--muted);
+  font-weight: 400;
+}
